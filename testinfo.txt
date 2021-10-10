@@ -1,0 +1,149 @@
+Each test case checks for the return values of the functions called,
+the program break, contents of the memory, and  virtual info result.
+
+initialise: this function initialises the heap start, initial program break,
+ and size of virtual heap. It prepares the system to begin the testing. It
+  is called before every set of tests.
+  
+reset: it is called after every set of tests, to clear the state of the
+heap, and free all the memory. 
+
+test_virtual_info: this function is called for every test. It tests whether
+the actual output given by virtual info function, matches the expected
+output or not. It helps check whether the current state of buddy allocator
+matches the expectation of code or not.
+
+add_value_malloc: this function changes the memory contents of the 
+allocated block. It helps test that we have access to the returned block
+or not, and also helps check whether realloc transfers the contents of
+block or not.
+
+check_value_realloc: this function checks whether the contents of new block
+after reallocation match the contents of old block or not.
+
+test_program_break: this function tests the program break after every 
+function call. It also makes sure that the address returned by virtual
+malloc, or virtual realloc lie within the heapstart and program break.
+
+test_init_allocator: this function tests whether init allocator
+is correctly assigning a virtual heap using given initial size or not.
+
+test_malloc_simple: this function tests the basic functionality of malloc,
+where block of size 2^j is available without requiring buddy split.
+
+test_malloc_multiple: this function tests the functionality of code when
+ malloc function is called several times, and it requires splitting the
+ block into buddies several times.
+ 
+ test_free_simple: this function tests the basic functionality of virtual
+  free, where block can be freed without requiring buddy merge.
+  
+test_free_multiple: this function tests the functionality of code when
+free function is called several times, and it requires merging the
+unallocated buddies several times.
+
+test_malloc_not_possible: this function checks the functionality of code,
+ when it is not possible to allocate the block of given size.
+ 
+ test_free_not_possible: this function checks the functionality of code,
+ when it is not possible to deallocate the block.
+ 
+ test_double_free: this function checks the functionality of code, when 
+ we try to free an already deallocated block.
+ 
+ test_realloc_simple: this function tests the basic functionality of virtual
+ realloc.
+
+test_realloc_complex: this function tests the functionality of virtual
+realloc in different possible cases. It involves several virtual free, and
+virtual malloc functions to tests the realloc function in different scenarios.
+
+test_realloc_freed_block: this function checks the functionality of code
+when we try to reallocate a block which has already been deallocated.
+
+test_realloc_not_possible: this function checks the functionality of code,
+ when it is not possible to reallocate the block.
+
+test_free_realloced_block: this function checks the functionality of code
+when we try to deallocate a block which has been reallocated.
+
+test_realloc_increment_decrement: this function checks the functionality
+of code, when we try to reallocate the block to larger, smaller, and equal
+ sizes.
+
+test_malloc_zero: this checks the functionality of code, when we try 
+to allocate 0 bytes to a block.
+
+test_malloc_one: this checks the functionality of code, when we try 
+to allocate 1 byte to a block.
+
+test_malloc_initial_size: this checks the functionality of code, when we
+ try to allocate all the bytes to a single block.
+
+test_malloc_minimum: this function checks the functionality of code, when
+we try to allocate a block whose size is equal to the minimum possible
+size of a block.
+
+test_malloc_minimum_zero: this function tests the functionality of code,
+ when the minimum possible block size is 2^0 = 1. We also check the
+  functionality when we try to allocate 1 byte block.
+  
+test_malloc_minimum_one: this function tests the functionality of code,
+ when the minimum possible block size is 2^1 = 2. We also check the
+  functionality when we try to allocate 2 byte block.
+  
+test_malloc_minimum_initial_size: this tests checks the functionality of 
+code when initial size, and minimum size are the same.
+
+test_realloc_zero: this checks the functionality of code, when we try 
+to reallocate 0 bytes to a block.
+
+test_realloc_one: this checks the functionality of code, when we try 
+to reallocate 1 byte to a block.
+
+test_realloc_initial_size: this checks the functionality of code, when we
+ try to reallocate all the bytes to a single block.
+
+test_realloc_minimum: this function checks the functionality of code, when
+we try to reallocate a block to a size equal to the minimum possible
+size of a block.
+
+test_realloc_minimum_zero: this function tests the functionality of code,
+ when the minimum possible block size is 2^0 = 1, and we try to reallocate
+  a large block to a smaller size of just 1 bytes
+  
+test_malloc_minimum_one: this function tests the functionality of code,
+ when the minimum possible block size is 2^1 = 2, and we try to reallocate
+  a large block to a smaller size of just 2 bytes
+  
+test_malloc_minimum_initial_size: this tests checks the functionality of 
+code when initial size, and minimum size are the same, and we try to
+ reallocate a block to minimum possible size.
+ 
+ test_integrated: this function combines all the operations possible,
+ using different kind of values to make use of all the scenarios we 
+ have covered so far.
+ 
+ test_integrated_long: this function tries to integrate all the 
+ functions, using a minimum possible block size of 4 bytes, hence
+ testing the code for allocating, reallocating, and deallocating,
+  different sizes of blocks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
